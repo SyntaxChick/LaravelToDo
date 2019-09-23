@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use App\Http\Requests\StoreTaskRequest;
 
 use App\Task;
-// Redirect
-// Data Validation
+use Redirect;
+use Auth;
 // Session? for flashing?
 
 class TasksController extends Controller
@@ -24,6 +25,11 @@ class TasksController extends Controller
         //$this->middleware('auth');
     }
     
+    public function create()
+    {
+        return view('create');
+    }
+    
      /**
      * Store new task
      * - Pass in validated data
@@ -31,8 +37,19 @@ class TasksController extends Controller
      *
      * @return Redirect
      */
-    public store(){
+    public function store(StoreTaskRequest $request){
        
+        $task = new Task();
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->status = $request->status;
+        $task->assigned_to = $request->assigned;
+        $task->created_by = Auth::user()->id;
+        
+        $task->save();
+        
+        return Redirect::route('home');
+        
     }
     
      /**
@@ -40,7 +57,7 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public edit(){
+    public function edit(){
         
     }
     
@@ -49,7 +66,7 @@ class TasksController extends Controller
      *
      * @return Redirect
      */
-    public update(){
+    public function update(){
         
     }
     
@@ -67,7 +84,7 @@ class TasksController extends Controller
      *
      * @return Redirect
      */
-    public delete(){
+    public function delete(){
         
     }
 }
