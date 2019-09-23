@@ -9,4 +9,10 @@ class Task extends Model
 {
     use SoftDeletes;
     
+    
+    public function assignedTo()
+    {
+        return $this->belongsTo('App\User', 'assigned_to', 'id');
+    }
+    
 }

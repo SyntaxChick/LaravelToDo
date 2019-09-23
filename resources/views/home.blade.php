@@ -15,15 +15,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td>Example, Although this should be long too. </td>
-                                    <td>This needs to be longer, it's a description afterall. So maybe a paragraph or more! This needs to be longer, it's a description afterall. So maybe a paragraph or more! This needs to be longer, it's a description afterall. So maybe a paragraph or more! This needs to be longer, it's a description afterall. So maybe a paragraph or more! This needs to be longer, it's a description afterall. So maybe a paragraph or more! This needs to be longer, it's a description afterall. So maybe a paragraph or more!</td>
-                                    <td>Not Started</td>
-                                    <td>Sarah Helms</td>
-                                    <td>Edit | Delete</td>
-                                </tr>
-                
+                                    @foreach($tasks as $task)
+                                    <tr>
+                                        <td></td>
+                                        <td>{{ $task->name }} </td>
+                                        <td>{{ $task->description }}</td>
+                                        <td>
+                                            @if($task->status == 0) Not Started
+                                            @elseif($task->status == 3) In Progress
+                                            @else Completed
+                                            @endif
+                                        </td>
+                                        <td>{{ $task->assignedTo->name }}</td>
+                                        <td>Edit | Delete</td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr>
