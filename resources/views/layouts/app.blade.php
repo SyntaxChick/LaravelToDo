@@ -83,5 +83,6 @@
 
 
     </div>
+    <script type="text/javascript" src="{{ asset('js/main.7b8d90424291b2bfe420.js') }}"></script>
     </body>
 </html>
