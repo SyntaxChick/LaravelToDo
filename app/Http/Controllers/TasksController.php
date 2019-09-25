@@ -71,9 +71,7 @@ class TasksController extends Controller
      */
     public function edit(Task $task){
         
-        $users = User::all();
-        
-        return view('edit')->with('task', $task)->with('users', $users);
+        return view('edit')->with('task', $task);
         
     }
     
@@ -90,7 +88,6 @@ class TasksController extends Controller
         $task->name = $request->name;
         $task->description = $request->description;
         $task->status = $request->status;
-        $task->assigned_to = $request->assigned;
         
         $task->save();
         

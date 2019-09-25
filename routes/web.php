@@ -15,6 +15,8 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/tasks/{filter}', 'HomeController@filtered')->name('task-filtered');
+
 Route::get('/task/create', 'TasksController@create')->name('task-create');
 Route::post('/task/store', 'TasksController@store')->name('task-store');
 

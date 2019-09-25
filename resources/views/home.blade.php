@@ -4,11 +4,24 @@
 
 <div class="main-card mb-3 card mt-4">
     <div class="card-header">
-        <a href="{{ route('task-create') }}" class="btn-shadow btn btn-wide btn-success">
-            <span class="btn-icon-wrapper pr-1 opacity-7">
-                <i class="fa fa-plus"> </i> Add Task
-            </span>
-        </a>
+        <div class="col-md-8">
+            @guest
+            @else
+            <a href="{{ route('task-create') }}" class="btn-shadow btn btn-wide btn-success">
+                <span class="btn-icon-wrapper pr-1 opacity-7">
+                    <i class="fa fa-plus"> </i> Add Task
+                </span>
+            </a>
+            @endguest
+        </div>
+        <div class="col-md-4">
+            <div role="group" class="mb-2 btn-group btn-group-toggle">
+                <a href="{{ route('home') }}" class="btn btn-shadow btn-info">All</a>
+                <a href="{{ route('task-filtered', [0]) }}" class="btn btn-shadow btn-danger">Not Started</a>
+                <a href="{{ route('task-filtered', [3]) }}" class="btn btn-shadow btn-warning">In Progress</a>
+                <a href="{{ route('task-filtered', [10]) }}" class="btn btn-shadow btn-success">Completed</a>
+            </div>
+        </div>
     </div>
     <div class="card-body">
         <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered">
@@ -108,7 +121,7 @@
 
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6">
                                 <button type="submit" class="btn btn-primary">
                                     Submit
                                 </button>

@@ -33,8 +33,8 @@
                 <div class="top-bar-left">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a href="{{ url('/') }}" target="_blank" class="nav-link">
-                                {{ config('app.name', 'Laravel') }}
+                            <a href="{{ url('/') }}" class="nav-link">
+                                Home
                             </a>
                         </li>
                     </ul>
