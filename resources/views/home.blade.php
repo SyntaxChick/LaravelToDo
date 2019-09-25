@@ -45,7 +45,7 @@
                         @if($task->status == 0) Not Started @elseif($task->status == 3) In Progress @else Completed @endif
                     </td>
                     <td>{{ $task->assignedTo->name }}</td>
-                    <td><a href="{{ route('task-edit', [$task->id]) }}" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-outline-warning"><i class="pe-7s-edit btn-icon-wrapper"> </i></a><a href="{{ route('task-delete', [$task->id]) }}" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></a>
+                    <td><a href="{{ route('task-edit', [$task->id]) }}" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-outline-warning"><i class="pe-7s-edit btn-icon-wrapper"> </i></a><a href="{{ route('task-delete', [$task->id]) }}" onclick=" return confirm('Are you sure you want to delete this task?');" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></a>
                     </td>
                 </tr>
                 @endforeach
