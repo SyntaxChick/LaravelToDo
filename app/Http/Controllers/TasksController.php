@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
 
 use App\Task;
 use App\User;
 use Redirect;
 use Auth;
-// Session? for flashing?
+
 
 class TasksController extends Controller
 {
@@ -81,7 +82,7 @@ class TasksController extends Controller
      *
      * @return Redirect
      */
-    public function update(StoreTaskRequest $request){
+    public function update(UpdateTaskRequest $request){
         
         $task = Task::find($request->id);
         
