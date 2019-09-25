@@ -33,7 +33,7 @@
                 <div class="top-bar-left">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a href="{{ url('/') }}" class="nav-link">
+                            <a href="{{ url('/home') }}" class="nav-link">
                                 Home
                             </a>
                         </li>
