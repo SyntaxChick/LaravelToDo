@@ -45,24 +45,7 @@
                     <small class="form-text text-muted">{{ $message }}</small> 
                 @enderror
             </div>
-
-            <div class="position-relative form-group">
-                <label for="assigned" class="">Assigned To</label>
-
-                <select name="assigned" id="assigned" class="form-control @error('assigned') is-invalid @enderror">
-                    <option disabled></option>
-                    @foreach($users as $user)
-                        <option value="{{ $user->id }}" @if($task->assigned_to == $user->id) selected @endif>{{ $user->name }}</option>
-                    @endforeach
-                </select> 
-                
-                @error('assigned')
-                    <small class="form-text text-muted">{{ $message }}</small> 
-                @enderror
-
-            </div>
-
-
+            
             <div class="form-group row mb-0">
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-primary">

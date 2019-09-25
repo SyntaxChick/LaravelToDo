@@ -38,7 +38,7 @@
             <tbody>
                 @foreach($tasks as $task)
                 <tr>
-                    <td></td>
+                    <td><a href="{{ route('task-complete', [$task->id]) }}" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn @if($task->status == 10) btn-success @else btn-outline-success @endif"><i class="fa fa-check btn-icon-wrapper"> </i></a></td>
                     <td>{{ $task->name }} </td>
                     <td>{{ $task->description }}</td>
                     <td>

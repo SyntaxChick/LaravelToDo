@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li class="nav-item mr-2">
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
                                 Logout
                             </a>
 

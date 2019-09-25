@@ -97,12 +97,23 @@ class TasksController extends Controller
     
     
     /**
-     * Update status
-     * - one click status update?
+     * Complete Task
+     * - To do apps should always have one-click complete options
      *
-     * @return ??
+     * @return Redirect
      */
-    
+    public function complete(Task $task)
+    {
+      if($task->status != 10){
+        $task->status = 10; 
+      } else {
+        $task->status = 0;
+      }
+        
+        $task->save();
+        
+        return Redirect::back();
+    }
     
     
     /**
