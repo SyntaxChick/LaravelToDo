@@ -21,6 +21,6 @@ Route::post('/task/store', 'TasksController@store')->name('task-store');
 Route::get('/task/edit/{task}', 'TasksController@edit')->name('task-edit');
 Route::post('task/update', 'TasksController@update')->name('task-update');
 
-Route::post('task/delete', 'TasksController@delete')->name('task-delete');
+Route::get('task/delete/{task}', 'TasksController@delete')->name('task-delete');
 
 Auth::routes();

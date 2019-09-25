@@ -6,14 +6,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaskRequest;
 
 use App\Task;
+use App\User;
 use Redirect;
 use Auth;
 // Session? for flashing?
 
 class TasksController extends Controller
 {
-    //
-    
     
      /**
      * Create a new controller instance.
@@ -22,13 +21,25 @@ class TasksController extends Controller
      */
     public function __construct()
     {
+        // Viewing is handled in the HomeController, so everything in this 
+        // controller can be hidden behind a login. 
         $this->middleware('auth');
     }
     
+    
+    /**
+     * Create task form
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function create()
     {
-        return view('create');
+        
+        $users = User::all();
+        
+        return view('create')->with('users', $users);
     }
+    
     
      /**
      * Store new task
@@ -52,6 +63,7 @@ class TasksController extends Controller
         
     }
     
+    
      /**
      * Edit task form
      *
@@ -59,18 +71,33 @@ class TasksController extends Controller
      */
     public function edit(Task $task){
         
-        return view('edit')->with('task', $task);
+        $users = User::all();
+        
+        return view('edit')->with('task', $task)->with('users', $users);
         
     }
+    
     
      /**
      * Update task
      *
      * @return Redirect
      */
-    public function update(){
+    public function update(StoreTaskRequest $request){
         
+        $task = Task::find($request->id);
+        
+        $task->name = $request->name;
+        $task->description = $request->description;
+        $task->status = $request->status;
+        $task->assigned_to = $request->assigned;
+        
+        $task->save();
+        
+        
+        return Redirect::route('home');    
     }
+    
     
     /**
      * Update status
@@ -80,13 +107,17 @@ class TasksController extends Controller
      */
     
     
+    
     /**
      * Delete task
      *
      *
      * @return Redirect
      */
-    public function delete(){
+    public function delete(Task $task){
         
+        $task->delete();
+        
+        return Redirect::back();
     }
 }

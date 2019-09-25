@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Task;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,8 @@ class HomeController extends Controller
     {
         
         $tasks = Task::all();
+        $users = User::all();
         
-        return view('home')->with('tasks', $tasks);
+        return view('home')->with('tasks', $tasks)->with('users', $users);
     }
 }
