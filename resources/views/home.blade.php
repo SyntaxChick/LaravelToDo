@@ -27,7 +27,7 @@
                                             @endif
                                         </td>
                                         <td>{{ $task->assignedTo->name }}</td>
-                                        <td>Edit | Delete</td>
+                                        <td><a href="{{ route('task-edit', [$task->id]) }}" class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-outline-warning"><i class="pe-7s-edit btn-icon-wrapper"> </i></a> <button class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

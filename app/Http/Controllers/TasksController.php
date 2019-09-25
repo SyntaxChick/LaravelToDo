@@ -22,7 +22,7 @@ class TasksController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
     
     public function create()
@@ -57,7 +57,9 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function edit(){
+    public function edit(Task $task){
+        
+        return view('edit')->with('task', $task);
         
     }
     
